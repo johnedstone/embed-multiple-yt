@@ -8,7 +8,7 @@
 
 ### To Do
 
-* Move javascript rewrite into separate file.
+* Move javascript rewritten code into separate file.
 * Style text, to align with middle of play button
 
 ### Errors
