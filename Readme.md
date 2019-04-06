@@ -13,7 +13,7 @@
 
 ### Errors
 
-The following message existed originally, and still persists. Looks to be a CORS error. Perhaps it's this problem: https://benohead.com/cross-document-communication-with-iframes/ 
+The following message existed originally in the console, and still persists. Looks to be a CORS error. Perhaps it's this problem: https://benohead.com/cross-document-communication-with-iframes/  But, the page loads, so this could be pursued later.
 
 ```
 Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin
