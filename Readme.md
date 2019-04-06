@@ -7,3 +7,11 @@
 
 * Move javascript rewrite into separate file.
 * Style text, to align with middle of play button
+
+### Errors
+
+The following message existed originally, and still persists. Looks to be a CORS error. Perhaps it's this problem: https://benohead.com/cross-document-communication-with-iframes/ 
+
+```
+Failed to execute 'postMessage' on 'DOMWindow': The target origin provided ('https://www.youtube.com') does not match the recipient window's origin
+```
