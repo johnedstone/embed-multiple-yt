@@ -1,0 +1,116 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Multiple Videos</title>
+
+    <style>
+      img[id^="youtube-icon"] {
+        height: 25px;
+        width: 25px;
+      }
+      p[id^="youtube-text"] {
+        color: blue;
+        font-style: italic;
+        display: inline;
+        padding: 0 0 0 1em;
+        // Todo: center this text
+      }
+    </style>
+
+  </head>
+  <body>
+
+    <div data-video="YcbxsG3OWfA"
+        data-autoplay="0"
+        data-loop="1"
+        id="youtube-audio-a">
+    </div>
+
+    <div data-video="CTuBoqon4JA"
+        data-autoplay="0"
+        data-loop="1"
+        id="youtube-audio-b">
+    </div>
+
+    <div data-video="rHleV-kpR8A"
+        data-autoplay="0"
+        data-loop="1"
+        id="youtube-audio-c">
+    </div>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://www.youtube.com/iframe_api"></script>
+
+  <script>
+    const IDs = [
+      {
+         id: "a",
+         text: "Tommy Emmanuel Deep River Blues"
+      },
+      {id: "b"},
+      {id: "c"}
+    ];
+  </script>
+
+  <script>
+/* 
+ YouTube Audio Embed 
+ --------------------
+ 
+ Author: Amit Agarwal
+ Web: http://www.labnol.org/?p=26740 
+
+ Modified: 04-Apr-2019, johnedstone@gmail.com, allowing for multiple videos.
+
+*/
+
+function onYouTubeIframeAPIReady(){
+
+  o = function(e, t){
+    // console.log('function says t is ' + t.id);
+    var a=e?"IDzX9gL.png":"quyUPXN.png";
+    t.setAttribute("src","https://i.imgur.com/"+a);
+  };
+
+  p = function(obj) {
+    obj.e.onclick=function(){r.getPlayerState()===YT.PlayerState.PLAYING||r.getPlayerState()===YT.PlayerState.BUFFERING?(r.pauseVideo(),o(!1, document.getElementById(obj.t.id))):(r.playVideo(),o(!0, document.getElementById(obj.t.id)))};
+  
+    var r=new YT.Player("youtube-player" + obj.id,
+      {height:"0",width:"0",videoId:obj.e.dataset.video,
+       playerVars:{autoplay:obj.e.dataset.autoplay,loop:obj.e.dataset.loop},
+       events:{onReady:function(e){r.setPlaybackQuality("small"),o(r.getPlayerState()!==YT.PlayerState.CUED, document.getElementById(obj.t.id))},onStateChange:function(e){obj.e.data===YT.PlayerState.ENDED&&o(!1, document.getElementById(obj.t.id))}}
+      })
+  }
+  for (obj of IDs) {
+    //console.log(obj.id);
+
+    obj.e=document.getElementById("youtube-audio-" + obj.id);
+
+    obj.t=document.createElement("img");
+    obj.t.setAttribute("id","youtube-icon" + obj.id);
+    obj.t.style.cssText="cursor:pointer;cursor:hand";
+    obj.e.appendChild(obj.t);
+
+    if (obj.hasOwnProperty('text')) {
+      // console.log("append text element");
+      obj.p=document.createElement("p");
+      obj.p.setAttribute("id","youtube-text" + obj.id);
+      obj.tn=document.createTextNode(obj.text);
+      obj.p.appendChild(obj.tn);
+      obj.e.appendChild(obj.p);
+    } else {
+      // console.log("no need to append text element");
+    }
+
+  
+    obj.a=document.createElement("div");
+    obj.a.setAttribute("id","youtube-player" + obj.id),
+    obj.e.appendChild(obj.a);
+    p(obj);
+  }
+}
+  </script>
+  </body>
+</html>
