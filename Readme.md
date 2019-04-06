@@ -2,7 +2,7 @@
 
 * Purpose: improve upon [this example](https://www.labnol.org/internet/youtube-audio-player/26740/) in order to embed more than one YouTube Video
 * Summary: Rewrote [this javascript code](https://cdn.rawgit.com/labnol/files/master/yt.js) to iterate over multiple players
-* Example:
+* Screenshot:
 
 ![Imgur](https://i.imgur.com/vVQ6xNy.png)
 
